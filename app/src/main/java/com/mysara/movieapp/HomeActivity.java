@@ -1,16 +1,15 @@
 package com.mysara.movieapp;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 import com.mysara.movieapp.utils.Constants;
 import com.mysara.movieapp.utils.MoviesAdapter;
 import com.mysara.movieapp.utils.RetrofitClient;
@@ -36,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        AppCenter.start(getApplication(), "5d556668-a866-4d38-9e2f-2e3cfa61f568",
+                Analytics.class, Crashes.class);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
